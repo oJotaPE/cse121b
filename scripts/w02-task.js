@@ -6,7 +6,7 @@
 
 const fullName = "João Pedro Gomes da Silva";
 let currentYear = 2024;
-let profilePicture = ["\\images\\profile-pic.jpg", "profile-pic"];
+let profilePicture = ["cse121b\\images\\profile-pic.jpg", "profile-pic"];
 // Step 3 - Element Variables
 
 const nameElement = document.getElementById("name");
