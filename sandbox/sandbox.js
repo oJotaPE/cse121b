@@ -1,59 +1,23 @@
-async function populate() {
-  const requestURL = 
-    "https://mdn.github.io/learning-area/javascript/oojs/json/superheroes.json";
-  const request = new Request(requestURL);
-  
-   const response = await fetch(request);
-   const superHeroes = await response.json();
-
-   populateHeader (superHeroes);
-   populateHeroes (superHeroes);
+// fetch.js
+const url = "https://pokeapi.co/api/v2/pokemon/ditto";
+let results = null;
+async function getPokemon(url) {
+  const response = await fetch(url);
+  //check to see if the fetch was successful
+  if (response.ok) {
+    // the API will send us JSON...but we have to convert the response before we can use it
+    // .json() also returns a promise...so we await it as well.
+    const data = await response.json();
+    doStuff(data);
+  }
 }
 
- function populateHeader(obj) {
-  const header = document.querySelector("header");
-  const myH1 = document.createElement("h1");
-
-  myH1.textContent = obj.squadName;
-  header.appendChild(myH1);
-
-  const myPara = document.createElement("p");
-  myPara.textContent = `HomeTown: ${obj.homeTown} // formed: ${obj.formed}`;
-  header.appendChild(myPara);
- }
-
- function populateHeroes(obj) {
-  const section = document.querySelector("section");
-  const heroes = obj.members;
-
-  for (const hero of heroes) {
-    const myArticle = document.createElement("article");
-    const myH2 = document.createElement("h2");
-    const myPara1 = document.createElement("p");
-    const myPara2 = document.createElement("p");
-    const myPara3 = document.createElement("p");
-    const myList = document.createElement("ul");
-
-    myH2.textContent = hero.name;
-    myPara1.textContent = `Secret identity: ${hero.secretIdentity}`;
-    myPara2.textContent = `Age: ${hero.age}`;
-    myPara3.textContent = "Superpowers:";
-
-    const superPowers = hero.powers;
-    for (const power of superPowers) {
-      const listItem = document.createElement("li");
-      listItem.textContent = power;
-      myList.appendChild(listItem);
-    }
-
-    myArticle.appendChild(myH2);
-    myArticle.appendChild(myPara1);
-    myArticle.appendChild(myPara2);
-    myArticle.appendChild(myPara3);
-    myArticle.appendChild(myList);
-
-    section.appendChild(myArticle);
-  }
- }
-
- populate();
+function doStuff(data) {
+  let output = document.querySelector("#output");
+  results = data;
+  let html = `<h2>${results.name}</h2>
+               <img src="${results.sprites.front_default}" alt="image of ${results.name}}`;
+  outputElement.innerHTML = html;
+}
+getPokemon(url);
+console.log("second: ", results);
