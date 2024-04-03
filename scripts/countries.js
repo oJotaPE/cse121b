@@ -16,27 +16,23 @@ const displayCountries = (countries) => {
       const flag = document.createElement("img");
       flag.setAttribute("src", `${country.flags.svg}`);
       flag.setAttribute("alt", `${country.flags.alt}`);
+      flag.setAttribute("id", `country-flag`);
 
-      const capital = document.createElement("p");
-      capital.textContent = `${country.capital}`;
+      const capital = document.createElement("li");
+      capital.innerText = `Capital: ${country.capital}`;
 
-      const region = document.createElement("p");
-      region.textContent = `${country.region}`;
+      const region = document.createElement("li");
+      region.innerText = `Continent: ${country.region}`;
 
-      const population = document.createElement("p");
-      population.textContent = `${country.population}`
+      const population = document.createElement("li");
+      population.innerText= `Population: ${country.population}`
 
 
       const ul = document.createElement("ul");
-      const caLi = document.createElement("li");
-      caLi.innerText = `capital: ${capital}`;
-      const poLi = document.createElement("li");
-      poLi.innerText = `population: ${population}`
-      const reLi = document.createElement("li");
-      reLi.innerText = `region: ${region}`;
-      ul.appendChild(caLi);
-      ul.appendChild(poLi);
-      ul.appendChild(reLi);
+      ul.setAttribute("id", `country-data`)
+      ul.appendChild(capital);
+      ul.appendChild(population);
+      ul.appendChild(region);
       
       
       article.appendChild(name);
