@@ -15,7 +15,7 @@ const displayCountries = (countries) => {
 
       const flag = document.createElement("img");
       flag.setAttribute("src", `${country.flags.svg}`);
-      flag.setAttribute("alt", $`${country.flags.alt}`);
+      flag.setAttribute("alt", `${country.flags.alt}`);
 
       const capital = document.createElement("p");
       capital.textContent = `${country.capital}`;
@@ -45,7 +45,7 @@ const displayCountries = (countries) => {
       
 
       intro.appendChild(article);
-      console.log(article);
+      // console.log(article);
   });
 }
 
@@ -57,6 +57,7 @@ const getCountry = async () => { //declare this is an async function
     const countries = await response.json(); //turn it into json
     countryList = countries;
     displayCountries(countryList);
+    console.log(templeList);
   }
 }
 
