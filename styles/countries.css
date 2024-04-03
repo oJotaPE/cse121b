@@ -1,0 +1,27 @@
+body{
+    background-color: rgb(2, 27, 5);
+    padding: auto;
+    font-size: 16px;
+    text-align: left;
+    min-width: auto;
+    color: rgb(255, 255, 241);
+}
+
+header{
+    text-align: center;
+    font-size: 20px;
+    background-color: rgba(156, 174, 41, 0.6);
+    color: whitesmoke;
+    margin: auto;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+#intro {
+    width: 60%;
+    padding: 5px;
+    margin-left: 20%;
+    margin-right: 20%;
+    border: 1px solid rgb(255, 255, 0, 0.6);
+    border-radius: 10px;
+}
