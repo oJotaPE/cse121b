@@ -1,24 +1,7 @@
 //global variables
-let countryList = [] //it needs to be an array to make sure my site will work
-
-// async function using fetch
-const url = 'https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population' //API with flag, name, capital and continent for each country
-
-const getCountry = async () => { //declare this is an async function
-  const response = await fetch(url); //wait for it to finish to load instead of doing other stuff
-  if(response.ok) {
-    const countries = await response.json(); //turn it into json
-    countryList = countries;
-    displayCountries(countryList);
-  }
-}
-
-
-//adding introduction to the site
+let countryList = []; //it needs to be an array to make sure my site will work
 const intro = document.querySelector("#intro");
-let presentation = document.createElement("p");
-presentation.innerText = `This website is supposed to present data for all the countries, and to provide a way to filter and specify the list of countries depending on what you are looking for. \n For the section chosen above, here is the list: `
-intro.appendChild(presentation);
+
 
 //display function
 const displayCountries = (countries) => {
@@ -61,10 +44,26 @@ const displayCountries = (countries) => {
       article.appendChild(ul);
       
 
-      // intro.appendChild(article);
+      intro.appendChild(article);
       console.log(article);
   });
 }
+
+// async function using fetch
+const url = 'https://restcountries.com/v3.1/all?fields=name,flags,capital,region,population'; //API with flag, name, capital and continent for each country
+const getCountry = async () => { //declare this is an async function
+  const response = await fetch(url); //wait for it to finish to load instead of doing other stuff
+  if(response.ok) {
+    const countries = await response.json(); //turn it into json
+    countryList = countries;
+    displayCountries(countryList);
+  }
+}
+
+//adding introduction to the site
+let presentation = document.createElement("p");
+presentation.innerText = `This website is supposed to present data for all the countries, and to provide a way to filter and specify the list of countries depending on what you are looking for. \n For the section chosen above, here is the list: `
+intro.appendChild(presentation);
 
 //calling getCountry to fetch data
 getCountry();
