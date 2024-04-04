@@ -62,30 +62,25 @@ const getCountry = async () => { //declare this is an async function
 //reset function
 function reset() {
   info.innerHTML = "";
+  info.textContent = "";
+  info.innerText = "";
 }
 
 //filterCountry function
-const filterCountry = (countries) => {
-  // reset();
-
-  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
-  let checkedBoxes = [];
-  checkboxes.forEach(function(checkbox) {
-    if (checkbox.checked) {
-      checkedBoxes.push(checkbox.id);
-    }
-  });
-
-    //verify the continent
-    let filtered = countryList.filter((country) => {
-      return checkedBoxes.includes(country.region.toLowerCase())
-    });
-
+const filterCountry = () => {
   reset();
-  displayCountries(filtered);
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]:checked');
+  let checkedBoxes = Array.from(checkboxes).map(checkbox => checkbox.id);
+  
+  // Filter countries based on checked checkboxes
+  let filtered = countryList.filter(country => checkedBoxes.includes(country.region.toLowerCase()));
 
-  if (filered = []) {
+  if (filtered.length === 0) {
+    // If no countries match the filter, display all countries
     displayCountries(countryList);
+  } else {
+    // Display filtered countries
+    displayCountries(filtered);
   }
 }
 
