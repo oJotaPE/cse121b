@@ -11,7 +11,30 @@
         <h1>Countries of the world</h1>
     </header>
     <main id="main" class="main">
-        <div id="intro" class="intro"></div>
+        <div id="intro" class="intro">
+                    <form id="checkboxes">
+                        <h3>Country filter</h3>
+                        <h4>Continent</h4>
+                        <input type="checkbox" id="europe">
+                        <label for="europe"> Europe </label> 
+                    
+                        <input type="checkbox" id="americas">
+                        <label for="americas"> Americas </label> 
+                    
+                        <input type="checkbox" id="africa">
+                        <label for="africa"> Africa </label> 
+                    
+                        <input type="checkbox" id="asia">
+                        <label for="asia"> Asia </label> 
+
+                        <input type="checkbox" id="oceania">
+                        <label for="oceania">Oceania</label> <br> <br>
+
+                         <button type="button" id="filter-button">Filter</button>
+                    </form>
+        </div>
+        <div id="info"></div>
+
     </main>
     <script src="/scripts/countries.js"></script>
     <footer>

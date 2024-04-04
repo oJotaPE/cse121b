@@ -1,6 +1,7 @@
 //global variables
 let countryList = []; //it needs to be an array to make sure my site will work
 const intro = document.querySelector("#intro");
+const info = document.querySelector("#info");
 
 
 //display function
@@ -12,6 +13,7 @@ const displayCountries = (countries) => {
 
       const name = document.createElement("h3");
       name.textContent = `${country.name.common}`;
+      name.setAttribute("id", `country-name`);
 
       const flag = document.createElement("img");
       flag.setAttribute("src", `${country.flags.svg}`);
@@ -40,7 +42,7 @@ const displayCountries = (countries) => {
       article.appendChild(ul);
       
 
-      intro.appendChild(article);
+      info.appendChild(article);
       // console.log(article);
   });
 }
@@ -57,6 +59,36 @@ const getCountry = async () => { //declare this is an async function
   }
 }
 
+//reset function
+function reset() {
+  info.innerHTML = "";
+}
+
+//filterCountry function
+const filterCountry = (countries) => {
+  // reset();
+
+  let checkboxes = document.querySelectorAll('input[type="checkbox"]');
+  let checkedBoxes = [];
+  checkboxes.forEach(function(checkbox) {
+    if (checkbox.checked) {
+      checkedBoxes.push(checkbox.id);
+    }
+  });
+
+    //verify the continent
+    let filtered = countryList.filter((country) => {
+      return checkedBoxes.includes(country.region.toLowerCase())
+    });
+
+  reset();
+  displayCountries(filtered);
+
+  if (filered = []) {
+    displayCountries(countryList);
+  }
+}
+
 //adding introduction to the site
 let presentation = document.createElement("p");
 presentation.innerText = `This website is supposed to present data for all the countries, and to provide a way to filter and specify the list of countries depending on what you are looking for. \n For the section chosen above, here is the list: `
@@ -64,3 +96,7 @@ intro.appendChild(presentation);
 
 //calling getCountry to fetch data
 getCountry();
+
+//event handler
+const button = document.querySelector("#filter-button");
+button.addEventListener("click", filterCountry);
